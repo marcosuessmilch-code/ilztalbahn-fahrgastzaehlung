@@ -1,0 +1,9 @@
+{
+  "name": "Ilztalbahn Fahrgastbefragung",
+  "short_name": "Ilztalbahn",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#005a9c",
+  "icons": []
+}
