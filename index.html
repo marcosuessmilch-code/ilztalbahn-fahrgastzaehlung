@@ -3,42 +3,173 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Ilztalbahn Fahrgastbefragung</title>
+
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
+
 <meta name="theme-color" content="#005a9c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Ilztalbahn">
 </head>
+
 <body>
+
 <h1>🚆 Ilztalbahn</h1>
+
 <div class="card">
-<h2>Erfassung</h2>
-<label>Datum</label><input type="date" id="datum">
-<label>Zugnummer</label><input type="text" id="zugnummer" placeholder="z. B. ITB 101">
-<label>Fahrscheinart optional</label>
-<select id="ticket"><option value="">Nicht angegeben</option><option>Deutschlandticket</option><option>Bayernticket</option></select>
+
+<h2>Fahrgastzählung</h2>
+
+<label>Datum</label>
+<input type="date" id="datum">
+
+
+<label>Zugnummer</label>
+<input type="text" id="zugnummer" placeholder="z. B. ITB 101">
+
+
+<label>Fahrscheinart (optional)</label>
+
+<select id="ticket" class="big-select">
+
+<option value="">Nicht angegeben</option>
+<option>Deutschlandticket</option>
+<option>Bayernticket</option>
+<option>Guti Ticket</option>
+<option>Fahrrad</option>
+
+</select>
+
+
 <label>Anzahl Fahrgäste</label>
-<div class="counter"><button type="button" onclick="minus()">−</button><input type="number" id="anzahl" value="1" min="1"><button type="button" onclick="plus()">+</button></div>
-<label>Einstieg</label><select id="einstieg"></select>
-<label>Ausstieg</label><select id="ausstieg"></select>
-<button class="save" type="button" onclick="savePassenger()">Speichern</button>
-<div id="status">Bereit</div>
-<div id="syncStatus">Synchronisation: bereit</div>
+
+<div class="counter">
+
+<button type="button" onclick="minus()">−</button>
+
+<input 
+type="number" 
+id="anzahl" 
+value="1" 
+min="1">
+
+<button type="button" onclick="plus()">+</button>
+
 </div>
+
+
+<label>Einstieg</label>
+
+<select id="einstieg" class="big-select"></select>
+
+
+<label>Ausstieg</label>
+
+<select id="ausstieg" class="big-select"></select>
+
+
+
+<button 
+class="save"
+type="button"
+onclick="savePassenger()">
+
+💾 Speichern
+
+</button>
+
+
+<div id="status">
+Bereit
+</div>
+
+
+<div id="syncStatus">
+Synchronisation: bereit
+</div>
+
+
+</div>
+
+
+
 <div class="card">
-<h2>Statistik</h2>
-<p>Gesamt: <b id="gesamt">0</b></p>
-<p>Deutschlandticket: <b id="dticket">0</b></p>
-<p>Bayernticket: <b id="bticket">0</b></p>
-<p>Nicht angegeben: <b id="unknownTicket">0</b></p>
-<p>Noch nicht synchronisiert: <b id="pending">0</b></p>
-<button type="button" onclick="syncPending()">Jetzt synchronisieren</button>
-<button type="button" onclick="exportCSV()">CSV Export</button>
-<button type="button" onclick="clearData()" class="danger">Alle Daten löschen</button>
+
+<h2>Auswertung</h2>
+
+<p>
+Gesamt:
+<b id="gesamt">0</b>
+</p>
+
+<p>
+Deutschlandticket:
+<b id="dticket">0</b>
+</p>
+
+<p>
+Bayernticket:
+<b id="bticket">0</b>
+</p>
+
+<p>
+Nicht angegeben:
+<b id="unknownTicket">0</b>
+</p>
+
+<p>
+Noch nicht synchronisiert:
+<b id="pending">0</b>
+</p>
+
+
+<button onclick="syncPending()">
+☁️ Jetzt synchronisieren
+</button>
+
+
+<button onclick="exportCSV()">
+CSV Export
+</button>
+
+
+<button 
+onclick="clearData()" 
+class="danger">
+
+Daten löschen
+
+</button>
+
+
 </div>
-<div class="card"><h2>OD-Matrix</h2><div class="scroll" id="odmatrix"></div></div>
-<div class="card"><h2>Streckenbelegung</h2><div id="sections"></div></div>
+
+
+
+<div class="card">
+
+<h2>OD-Matrix</h2>
+
+<div id="odmatrix"></div>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>Streckenbelegung</h2>
+
+<div id="sections"></div>
+
+</div>
+
+
+
 <script src="app.js"></script>
+
+
 </body>
 </html>
